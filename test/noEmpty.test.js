@@ -1,4 +1,4 @@
-const notEmpty = require('./index');
+const notEmpty = require('../lib/notEmpty');
 /**
  * 真假  expect(n).not.toBeTruthy();  expect(n).toBeFalsy();
  */

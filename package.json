@@ -1,15 +1,20 @@
 {
   "name": "yf-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "make you happy!",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "prod": "webpack"
   },
   "author": "yellowfrogcn",
   "license": "ISC",
   "dependencies": {
-    "jest": "^22.0.3"
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "jest": "^22.0.3",
+    "webpack": "^3.10.0"
   },
   "directories": {
     "lib": "lib"

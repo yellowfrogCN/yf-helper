@@ -1,4 +1,4 @@
-const compouterStr = require('./index');
+const compouterStr = require('../lib/computerStr');
 /**
  * 真假  expect(n).not.toBeTruthy();  expect(n).toBeFalsy();
  */
