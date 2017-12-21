@@ -1,0 +1,14 @@
+/node_modules/
+/debug.log
+/npm-debug.log
+/.happypack/
+/.settings/
+/.project
+/.idea/
+/.vscode/
+/.DS_Store/
+/coverage/
+/yarn.lock
+/yarn-error.log
+/bash.exe.stackdump
+/package-lock.json

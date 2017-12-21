@@ -1,0 +1,29 @@
+{
+  "name": "yf-helper",
+  "version": "1.0.1",
+  "description": "make you happy!",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "yellowfrogcn",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^22.0.3"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yellowfrogCN/yf-helper.git"
+  },
+  "keywords": [
+    "function"
+  ],
+  "bugs": {
+    "url": "https://github.com/yellowfrogCN/yf-helper/issues"
+  },
+  "homepage": "https://github.com/yellowfrogCN/yf-helper#readme"
+}
