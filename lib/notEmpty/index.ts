@@ -5,6 +5,7 @@
  */
 function notEmpty (arg : any) : boolean {
     if (!arg) return false;
+    // 这里主要用来判断是否是 [] 或者 {}
     if (Object.keys(arg).length === 0 && typeof (arg) === 'object') {
         return false;
     }

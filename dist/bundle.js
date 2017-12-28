@@ -78,6 +78,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 function notEmpty(arg) {
     if (!arg)
         return false;
+    // 这里主要用来判断是否是 [] 或者 {}
     if (Object.keys(arg).length === 0 && typeof (arg) === 'object') {
         return false;
     }
@@ -97,7 +98,8 @@ exports.default = {
     'repeat': __webpack_require__(2).default,
     'notEmpty': __webpack_require__(0).default,
     'flatten': __webpack_require__(3).default,
-    'flattenDeep': __webpack_require__(4).default
+    'flattenDeep': __webpack_require__(4).default,
+    'trim': __webpack_require__(5).default
 };
 
 
@@ -191,6 +193,38 @@ function flattenDeep(arr) {
     return temArr;
 }
 exports.default = flattenDeep;
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+// 增强型 trim
+function trim(str, range) {
+    if (range === void 0) { range = 3; }
+    if (typeof (str) !== 'string')
+        return str;
+    switch (range) {
+        case 1:
+            // 去除 首 空格
+            return str.replace(/\s+/, '');
+        case 2:
+            // 去除 尾 空格
+            return str.replace(/\s+$/, '');
+        case 3:
+            // 去除首尾空格
+            return str.replace(/\s+/, '').replace(/\s+$/, '');
+        case 4:
+            // 去除全部空格
+            return str.replace(/\s+/g, '');
+        default:
+            return str;
+    }
+}
+exports.default = trim;
 
 
 /***/ })
