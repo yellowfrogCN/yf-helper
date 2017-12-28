@@ -1,6 +1,6 @@
-module.exports = {
-    'repeat': require('./repeat/index.ts'),
-    'notEmpty': require('./notEmpty/index.ts'),
-    'flatten': require('./flatten/index.ts'),
-    'flattenDeep': require('./flattenDeep/index.ts')
+export default {
+    'repeat': require('./repeat').default,
+    'notEmpty': require('./notEmpty').default,
+    'flatten': require('./flatten').default,
+    'flattenDeep': require('./flattenDeep').default
 }

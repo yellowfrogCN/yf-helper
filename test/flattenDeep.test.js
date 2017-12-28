@@ -1,4 +1,5 @@
-const {flattenDeep} = require('../lib');
+const { flattenDeep } = require('../lib').default;
+// import { flattenDeep } from '../lib';
 test('测试 flattenDeep : 再怎么深层的嵌套都转化为单层嵌套', () => {
     expect(flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])).toEqual(
         [1,2,3,4,5,6,{a: 7}]

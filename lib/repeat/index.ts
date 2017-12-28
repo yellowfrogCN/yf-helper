@@ -3,7 +3,7 @@
  * @param {*} arg: 要计算的字符串 为''时返回 false
  * @param {*} isMax: 为 true 是计算最大字符，为 fasle 是计算最小字符
  */
-const notEmpty = require('../notEmpty');
+import notEmpty from '../notEmpty';
 
 function repeat (arg: any, isMax: boolean = true) : Object {
     // 如果为空，返回false
@@ -36,4 +36,4 @@ function repeat (arg: any, isMax: boolean = true) : Object {
       return result[result.length - 1];
     }
 }
-module.exports = repeat;
+export default repeat;

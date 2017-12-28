@@ -11,4 +11,4 @@ function notEmpty (arg : any) : boolean {
 
     return true;
 }
-module.exports = notEmpty;
+export default notEmpty;

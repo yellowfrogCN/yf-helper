@@ -1,4 +1,5 @@
-const {notEmpty} = require('../lib');
+const { notEmpty } = require('../lib').default;
+// import { notEmpty } from '../lib';
 /**
  * 真假  expect(n).not.toBeTruthy();  expect(n).toBeFalsy();
  */

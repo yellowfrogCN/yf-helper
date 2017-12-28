@@ -13,4 +13,4 @@ function flattenDeep (arr: Array<any>) : Array<any>{
     return temArr;
 }
 
-module.exports = flattenDeep;
+export default flattenDeep;
