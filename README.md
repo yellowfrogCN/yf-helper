@@ -1,9 +1,9 @@
 # yf-helper
 一些偶尔会用到的算法、尝试看下是怎么写出来这种算法的  - -.V
 ## 主要使用到的技术
-* [webpack](https://doc.webpack-china.org/) 主要用来统一打包,把 typescript、ES6 转换为 ES5 (未使用压缩功能)
-* [typescript](https://www.tslang.cn/docs/handbook/basic-types.html) 用 typescript 代替 javascript 是因为参数类型的定义，方便后期维护
-* [jest](http://facebook.github.io/jest/zh-Hans/) 对函数进行测试, 在发布前都要先经过自己写的测试，使用 ts-jest、awesome-typescript-loader 配合使用
+* [webpack](https://doc.webpack-china.org/) -- 主要用来统一打包,把 typescript/ES6 转换为 ES5 (未使用压缩功能)
+* [typescript](https://www.tslang.cn/docs/handbook/basic-types.html) -- 用 typescript 代替 javascript 是因为参数类型的定义，方便后期维护, webpack 中配合 awesome-typescript-loader 使用
+* [jest](http://facebook.github.io/jest/zh-Hans/) -- 对函数进行测试, 在发布前都要先经过自己写的测试，使用 ts-jest 配合使用
 ### 非常简单 在项目中使用
 ```js
 // 项目中安装此依赖
