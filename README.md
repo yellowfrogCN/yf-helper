@@ -24,12 +24,10 @@ test('测试notEmpty：判断为空的变量', () => {
     expect(notEmpty(null)).toBeFalsy();
     expect(notEmpty(undefined)).toBeFalsy();
     expect(notEmpty(NaN)).toBeFalsy();
+    expect(notEmpty(0/0)).toBeFalsy();
     // 空数组 空Object
     expect(notEmpty([])).toBeFalsy();
     expect(notEmpty({})).toBeFalsy(); 
-    // 第二个参数，空数组 空Object 
-    expect(notEmpty([], false)).toBeTruthy();
-    expect(notEmpty({}, false)).toBeTruthy(); 
     // 数字 都为真
     // ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
     expect(notEmpty(0)).toBeTruthy();
@@ -40,22 +38,59 @@ test('测试notEmpty：判断为空的变量', () => {
     // 这个函数是测试字符串的话就是真 以下两个的意思是一样的。都为真
     expect(notEmpty('0')).not.toBeFalsy();
     expect(notEmpty('1')).toBeTruthy();
+    // 第二个参数，空数组 空Object 
+    expect(notEmpty([], false)).toBeTruthy();
+    expect(notEmpty({}, false)).toBeTruthy(); 
 })
 ```
 ```js
 // flatten
-test('测试 flatten：把数组的深层嵌套替换成单层嵌套', () => {
-    expect(flatten([1,2, [3,4, [5,6, {a: 7}]]])).toEqual(
+test('测试 flattenDeep : 再怎么深层的嵌套都转化为单层嵌套', () => {
+    expect(flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])).toEqual(
         [1,2,3,4,5,6,{a: 7}]
+    )
+    // 什么都不传
+    expect(flattenDeep()).toEqual(
+        []
+    )
+    // 传了 字符串 或者数字
+    expect(flattenDeep(0)).toEqual(
+        []
+    )
+    expect(flattenDeep(1)).toEqual(
+        []
+    )
+    expect(flattenDeep('1')).toEqual(
+        []
+    )
+    // 传了 json
+    expect(flattenDeep({a: 1})).toEqual(
+        []
     )
 })
 ```
 ```js
-test('测试 compouterStr：测试字符串中的重复最多的字符', () => {
-    expect(compouterStr('')).toBeFalsy();
-    expect(compouterStr('aaabbbccccc')).toEqual(
+// flatten
+test('测试 flatten ：把数组的深层嵌套替换成单层嵌套', () => {
+    expect(flatten([1, 2, '24', [3, 5, [6, 7]]])).toEqual(
+        [1, 2, "24", 3, 5, [6, 7]]
+    )
+})
+```
+```js
+test('测试 repeat', () => {
+    expect(repeat('')).toEqual({});
+    expect(repeat()).toEqual({});
+    expect(repeat([])).toEqual({});
+    expect(repeat([1,2,3,455,1,1])).toEqual(
         {
-            strIs: "c",
+            label: 1,
+            value: 3
+        }
+    )
+    expect(repeat('aaabbbccccc')).toEqual(
+        {
+            label: "c",
             value: 5
         }
     )

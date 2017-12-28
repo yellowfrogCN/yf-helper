@@ -1,20 +1,31 @@
 {
   "name": "yf-helper",
-  "version": "1.0.7",
+  "version": "2.0.0",
   "description": "make you happy!",
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "prod": "webpack"
+    "prod": "npm run test && rm -rf ./dist && webpack"
   },
   "author": "yellowfrogcn",
   "license": "ISC",
   "dependencies": {
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "awesome-typescript-loader": "^3.4.1",
     "jest": "^22.0.3",
+    "ts-jest": "^22.0.0",
+    "typescript": "^2.6.2",
     "webpack": "^3.10.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/*.(spec|test).(ts|tsx|js)$"
   },
   "directories": {
     "lib": "lib"

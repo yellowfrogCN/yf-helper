@@ -1,4 +1,4 @@
-const notEmpty = require('../lib/notEmpty');
+const {notEmpty} = require('../lib');
 /**
  * 真假  expect(n).not.toBeTruthy();  expect(n).toBeFalsy();
  */
@@ -7,15 +7,13 @@ test('测试notEmpty：判断为空的变量', () => {
     expect(notEmpty(null)).toBeFalsy();
     expect(notEmpty(undefined)).toBeFalsy();
     expect(notEmpty(NaN)).toBeFalsy();
+    expect(notEmpty(0/0)).toBeFalsy();
     // 空数组 空Object
     expect(notEmpty([])).toBeFalsy();
     expect(notEmpty({})).toBeFalsy(); 
-    // 第二个参数，空数组 空Object 
-    expect(notEmpty([], false)).toBeTruthy();
-    expect(notEmpty({}, false)).toBeTruthy(); 
     // 数字 都为真
     // ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
-    expect(notEmpty(0)).toBeTruthy();
+    expect(notEmpty(0)).toBeFalsy();
     expect(notEmpty(1)).toBeTruthy();
     // 空字符串 空
     expect(notEmpty('')).toBeFalsy();
