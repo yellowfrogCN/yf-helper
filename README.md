@@ -23,17 +23,17 @@ console.log(
 #### 快速跳转
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [dropRight](#dropright) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
-- [notEmpty](#notEmpty) ：判断是否为空
-- [flattenDeep](#flattenDeep) ：再怎么深层的嵌套都转化为单层嵌套
+- [notEmpty](#notempty) ：判断是否为空
+- [flattenDeep](#flattendeep) ：再怎么深层的嵌套都转化为单层嵌套
 - [flatten](#flatten) : 跟flattenDeep一样，但只转换第一层
 - [repeat](#repeat) : 查询数组或者字符串的重复
 - [trim](#trim) : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
 - [chunk](#chunk) ：返回一个包含拆分块数组的新数组(相当于一个二维数组)
-- [createReducer](#createReducer) : 创建 reducer 的 模板
+- [createReducer](#createreducer) : 创建 reducer 的 模板
 
 #### 已通过jest测试的案例
 
-<span id="drop"></span>
+##### drop
 ```js
 // drop
 const arr = [1, 2, 3];
@@ -53,7 +53,8 @@ drop(arr, arr.length + 1) // => []
 drop(arr, 0) // => [1,2,3]
 
 ```
-# dropRight
+
+##### dropRight
 ```js
 // dropRight
 const arr = [1, 2, 3];
@@ -73,7 +74,8 @@ dropRight(arr, arr.length + 1) // => []
 dropRight(arr, 0) // => [1,2,3]
 
 ```
-<span id="notEmpty"></span>
+
+##### notEmpty
 ```js
 // notEmpty
 notEmpty(null) // => false
@@ -89,7 +91,8 @@ notEmpty(1) // => true
 notEmpty('') // => false
 notEmpty() // => false
 ```
-<span id="flattenDeep"></span>
+
+##### flattenDeep
 ```js
 // flattenDeep
 flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])
@@ -101,12 +104,12 @@ flattenDeep(0) // => []
 // 传了 json
 flattenDeep({a: 1})) // => []
 ```
-<span id="flatten"></span>
+##### flatten
 ```js
 // flatten
 flatten([1, 2, '24', [3, 5, [6, 7]]]) // => [1, 2, "24", 3, 5, [6, 7]]
 ```
-<span id="repeat"></span>
+##### repeat
 ```js
 // repeat
 repeat([1,2,3,455,1,1])
@@ -123,7 +126,7 @@ repeat('aaabbbccccc')
 
 repeat('') // => {}
 ```
-<span id="trim"></span>
+##### trim
 ```js
 // trim
 // 第二个参数：1 去除 首 空格
@@ -138,7 +141,7 @@ trim(' a   b   ', 4) // => 'ab'
 trim([]) // => []
 
 ```
-<span id="chunk"></span>
+##### chunk
 ```js
 // chunk
 const arr = [1, 2, 3];
@@ -155,7 +158,7 @@ chunk(arr, arr.length + 1) // => [[1,2,3],[]]
 chunk(arr, 0) // => [[],[1,2,3]]
 
 ```
-<span id="createReducer"></span>
+##### createReducer
 [createReducer](http://cn.redux.js.org/docs/recipes/reducers/RefactoringReducersExample.html)
 ```js
 // createReducer 创建 reducer 的 模板
