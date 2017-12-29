@@ -94,18 +94,56 @@ exports.default = notEmpty;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var createReducer_1 = __webpack_require__(2);
+var repeat_1 = __webpack_require__(3);
+var notEmpty_1 = __webpack_require__(0);
+var flatten_1 = __webpack_require__(4);
+var flattenDeep_1 = __webpack_require__(5);
+var trim_1 = __webpack_require__(6);
+var chunk_1 = __webpack_require__(7);
 exports.default = {
-    'repeat': __webpack_require__(2).default,
-    'notEmpty': __webpack_require__(0).default,
-    'flatten': __webpack_require__(3).default,
-    'flattenDeep': __webpack_require__(4).default,
-    'trim': __webpack_require__(5).default,
-    'chunk': __webpack_require__(6).default,
+    createReducer: createReducer_1.default,
+    repeat: repeat_1.default,
+    notEmpty: notEmpty_1.default,
+    flatten: flatten_1.default,
+    flattenDeep: flattenDeep_1.default,
+    trim: trim_1.default,
+    chunk: chunk_1.default,
 };
 
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 创建 reducer 的 模板
+ * http://cn.redux.js.org/docs/recipes/reducers/RefactoringReducersExample.html
+ * @param {*} initialState
+ * @param {*} handlers
+ */
+function createReducer(initialState, handlers) {
+    // 前面这步只会使用一次
+    return function reducer(state, action) {
+        if (state === void 0) { state = initialState; }
+        if (handlers.hasOwnProperty(action.type)) {
+            // "ACTION_TYPE": function ===> function (state, action)
+            // handlers[action.type] === function
+            return handlers[action.type](state, action);
+        }
+        else {
+            return state;
+        }
+    };
+}
+exports.default = createReducer;
+
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -156,7 +194,7 @@ exports.default = repeat;
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -171,7 +209,7 @@ exports.default = flatten;
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -197,7 +235,7 @@ exports.default = flattenDeep;
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -229,7 +267,7 @@ exports.default = trim;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";

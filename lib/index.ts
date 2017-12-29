@@ -1,8 +1,17 @@
+import createReducer from './createReducer';
+import repeat from './repeat';
+import notEmpty from './notEmpty';
+import flatten from './flatten';
+import flattenDeep from './flattenDeep';
+import trim from './trim';
+import chunk from './chunk';
+
 export default {
-    'repeat': require('./repeat').default,
-    'notEmpty': require('./notEmpty').default,
-    'flatten': require('./flatten').default,
-    'flattenDeep': require('./flattenDeep').default,
-    'trim': require('./trim').default,
-    'chunk': require('./chunk').default,
+    createReducer,
+    repeat,
+    notEmpty,
+    flatten,
+    flattenDeep,
+    trim,
+    chunk,
 }

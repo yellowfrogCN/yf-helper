@@ -33,18 +33,18 @@ module.exports = {
     plugins: [
         // ★ 貌似压缩后用不了了
         // new webpack.optimize.UglifyJsPlugin(
-            // {
-                // output: {
-                //     最紧凑的输出 false 为最紧凑 ，true 不是最紧凑
-                //     beautify: true,
-                //     删除所有注释
-                //     comments: false
-                // },
-                // compress: {
-                //     drop_console: true,
-                //     warnings: false
-                // },
-            // }
+        //     {
+        //         output: {
+        //             // 最紧凑的输出 false 为最紧凑 ，true 不是最紧凑
+        //             beautify: true,
+        //             // 删除所有注释
+        //             comments: false
+        //         },
+        //         compress: {
+        //             drop_console: true,
+        //             warnings: false
+        //         },
+        //     }
         // )
     ]
 };
