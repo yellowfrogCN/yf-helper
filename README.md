@@ -17,89 +17,23 @@ import helper from 'yf-helper';
 const helper = require('yf-helper').default;
 // 调用栗子
 console.log(
-    helper.notEmpty([])
-) // output: false
+    helper.drop([1, 2, 3, 4], 2)
+) // output: [3, 4]
 ```
+- [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
+- [dropRight](#dropRight) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
+- [notEmpty](#notEmpty) ：判断是否为空
+- [flattenDeep](#flattenDeep) ：再怎么深层的嵌套都转化为单层嵌套
+- [flatten](#flatten) : 跟flattenDeep一样，但只转换第一层
+- [repeat](#repeat) : 查询数组或者字符串的重复
+- [trim](#trim) : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
+- [chunk](#chunk) ：返回一个包含拆分块数组的新数组(相当于一个二维数组)
+- [createReducer](#createReducer) : 创建 reducer 的 模板
+## 已通过jest测试的案例
 
-## 测试案例
+<span id="drop"></span>
 ```js
-// notEmpty 判断是否为空
-notEmpty(null) // => false
-notEmpty(undefined) // => false
-notEmpty(NaN) // => false
-
-notEmpty([]) // => false
-notEmpty({}) // => false
-// ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
-notEmpty(0) // => false
-notEmpty(1) // => true
-
-notEmpty('') // => false
-notEmpty() // => false
-```
-```js
-// flattenDeep : 再怎么深层的嵌套都转化为单层嵌套
-flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])
-// => [1,2,3,4,5,6,{a: 7}]
-// 什么都不传 或者 数字、字符串、json等非数组 都是返回 json 
-flattenDeep() // => []
-// 传了 字符串 或者数字
-flattenDeep(0) // => []
-// 传了 json
-flattenDeep({a: 1})) // => []
-```
-```js
-// flatten ：只转换第一层
-flatten([1, 2, '24', [3, 5, [6, 7]]]) // => [1, 2, "24", 3, 5, [6, 7]]
-```
-```js
-// repeat : 查询数组或者字符串的重复
-repeat([1,2,3,455,1,1])
-// =>  {
-//         label: 1,
-//         value: 3
-//     }
-
-repeat('aaabbbccccc')
-// =>  {
-//         label: "c",
-//         value: 5
-//     }
-
-repeat('') // => {}
-```
-```js
-// trim : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
-// 第二个参数：1 去除 首 空格
-trim(' a   b   ', 1) // => 'a   b   '
-// 第二个参数：2 去除 尾 空格
-trim(' a   b   ', 2) // => ' a   b'
-// 第二个参数：3 （默认） 首尾空格
-trim(' a   b   ') // => 'a   b'
-// 第二个参数：4 去除全部空格
-trim(' a   b   ', 4) // => 'ab'
-// 非字符串 直接返回
-trim([]) // => []
-
-```
-```js
-// chunk ： 返回一个包含拆分块数组的新数组(相当于一个二维数组)
-const arr = [1, 2, 3];
-// 通常情况下
-chunk(arr, 1) // => [[1],[2,3]]
-
-// 刚好等于 数组长度的情况下
-chunk(arr, arr.length) // => [[1,2,3],[]]
-
-// 大于数组长度的情况下
-chunk(arr, arr.length + 1) // => [[1,2,3],[]]
-
-// 为零的情况下
-chunk(arr, 0) // => [[],[1,2,3]]
-
-```
-```js
-// drop ： 将 array 中的前 n 个元素去掉，然后返回剩余的部分
+// drop
 const arr = [1, 2, 3];
 // 默认情况下 从1开始计算
 drop(arr) // => [2, 3]
@@ -117,9 +51,112 @@ drop(arr, arr.length + 1) // => []
 drop(arr, 0) // => [1,2,3]
 
 ```
+<span id="dropRight"></span>
+```js
+// dropRight
+const arr = [1, 2, 3];
+// 默认情况下 从1开始计算
+dropRight(arr) // => [1, 2]
+
+// 通常情况下
+dropRight(arr, 2) // => [1]
+
+// 刚好等于 数组长度的情况下
+dropRight(arr, arr.length) // => []
+
+// 大于数组长度的情况下
+dropRight(arr, arr.length + 1) // => []
+
+// 为零的情况下
+dropRight(arr, 0) // => [1,2,3]
+
+```
+<span id="notEmpty"></span>
+```js
+// notEmpty
+notEmpty(null) // => false
+notEmpty(undefined) // => false
+notEmpty(NaN) // => false
+
+notEmpty([]) // => false
+notEmpty({}) // => false
+// ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
+notEmpty(0) // => false
+notEmpty(1) // => true
+
+notEmpty('') // => false
+notEmpty() // => false
+```
+<span id="flattenDeep"></span>
+```js
+// flattenDeep
+flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])
+// => [1,2,3,4,5,6,{a: 7}]
+// 什么都不传 或者 数字、字符串、json等非数组 都是返回 json 
+flattenDeep() // => []
+// 传了 字符串 或者数字
+flattenDeep(0) // => []
+// 传了 json
+flattenDeep({a: 1})) // => []
+```
+<span id="flatten"></span>
+```js
+// flatten
+flatten([1, 2, '24', [3, 5, [6, 7]]]) // => [1, 2, "24", 3, 5, [6, 7]]
+```
+<span id="repeat"></span>
+```js
+// repeat
+repeat([1,2,3,455,1,1])
+// =>  {
+//         label: 1,
+//         value: 3
+//     }
+
+repeat('aaabbbccccc')
+// =>  {
+//         label: "c",
+//         value: 5
+//     }
+
+repeat('') // => {}
+```
+<span id="trim"></span>
+```js
+// trim
+// 第二个参数：1 去除 首 空格
+trim(' a   b   ', 1) // => 'a   b   '
+// 第二个参数：2 去除 尾 空格
+trim(' a   b   ', 2) // => ' a   b'
+// 第二个参数：3 （默认） 首尾空格
+trim(' a   b   ') // => 'a   b'
+// 第二个参数：4 去除全部空格
+trim(' a   b   ', 4) // => 'ab'
+// 非字符串 直接返回
+trim([]) // => []
+
+```
+<span id="chunk"></span>
+```js
+// chunk
+const arr = [1, 2, 3];
+// 通常情况下
+chunk(arr, 1) // => [[1],[2,3]]
+
+// 刚好等于 数组长度的情况下
+chunk(arr, arr.length) // => [[1,2,3],[]]
+
+// 大于数组长度的情况下
+chunk(arr, arr.length + 1) // => [[1,2,3],[]]
+
+// 为零的情况下
+chunk(arr, 0) // => [[],[1,2,3]]
+
+```
+<span id="createReducer"></span>
+[createReducer](http://cn.redux.js.org/docs/recipes/reducers/RefactoringReducersExample.html)
 ```js
 // createReducer 创建 reducer 的 模板
-// http://cn.redux.js.org/docs/recipes/reducers/RefactoringReducersExample.html
 import { createReducer } from 'yf-helper';
 ```
 ### 想自己发布到npm如何操作玩耍
