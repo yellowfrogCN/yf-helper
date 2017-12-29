@@ -53,7 +53,7 @@ drop(arr, arr.length + 1) // => []
 drop(arr, 0) // => [1,2,3]
 
 ```
-#dropRight
+# dropRight
 ```js
 // dropRight
 const arr = [1, 2, 3];
