@@ -20,6 +20,7 @@ console.log(
     helper.drop([1, 2, 3, 4], 2)
 ) // output: [3, 4]
 ```
+#### 快速跳转
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [dropRight](#dropRight) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [notEmpty](#notEmpty) ：判断是否为空
@@ -29,7 +30,8 @@ console.log(
 - [trim](#trim) : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
 - [chunk](#chunk) ：返回一个包含拆分块数组的新数组(相当于一个二维数组)
 - [createReducer](#createReducer) : 创建 reducer 的 模板
-## 已通过jest测试的案例
+
+#### 已通过jest测试的案例
 
 <span id="drop"></span>
 ```js
@@ -51,7 +53,7 @@ drop(arr, arr.length + 1) // => []
 drop(arr, 0) // => [1,2,3]
 
 ```
-<span id="dropRight"></span>
+#dropRight
 ```js
 // dropRight
 const arr = [1, 2, 3];
