@@ -23,118 +23,80 @@ console.log(
 
 ## 测试案例
 ```js
-// notEmpty
-test('测试notEmpty：判断为空的变量', () => {
-    // 传统三大B：null undefined NaN
-    expect(notEmpty(null)).toBeFalsy();
-    expect(notEmpty(undefined)).toBeFalsy();
-    expect(notEmpty(NaN)).toBeFalsy();
-    expect(notEmpty(0/0)).toBeFalsy();
-    // 空数组 空Object
-    expect(notEmpty([])).toBeFalsy();
-    expect(notEmpty({})).toBeFalsy(); 
-    // 数字 都为真
-    // ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
-    expect(notEmpty(0)).toBeFalsy();
-    expect(notEmpty(1)).toBeTruthy();
-    // 空字符串 空
-    expect(notEmpty('')).toBeFalsy();
-    expect(notEmpty()).toBeFalsy();
-    // 这个函数是测试字符串的话就是真 以下两个的意思是一样的。都为真
-    expect(notEmpty('0')).not.toBeFalsy();
-    expect(notEmpty('1')).toBeTruthy();
-})
+// notEmpty 判断是否为空
+notEmpty(null) // => false
+notEmpty(undefined) // => false
+notEmpty(NaN) // => false
+
+notEmpty([]) // => false
+notEmpty({}) // => false
+// ★这里跟lodash.isEmpty不一样,isEmpty是 number 都算 空
+notEmpty(0) // => false
+notEmpty(1) // => true
+
+notEmpty('') // => false
+notEmpty() // => false
 ```
 ```js
-// flatten
-test('测试 flattenDeep : 再怎么深层的嵌套都转化为单层嵌套', () => {
-    expect(flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])).toEqual(
-        [1,2,3,4,5,6,{a: 7}]
-    )
-    // 什么都不传
-    expect(flattenDeep()).toEqual(
-        []
-    )
-    // 传了 字符串 或者数字
-    expect(flattenDeep(0)).toEqual(
-        []
-    )
-    expect(flattenDeep(1)).toEqual(
-        []
-    )
-    expect(flattenDeep('1')).toEqual(
-        []
-    )
-    // 传了 json
-    expect(flattenDeep({a: 1})).toEqual(
-        []
-    )
-})
+// flattenDeep : 再怎么深层的嵌套都转化为单层嵌套
+flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])
+// => [1,2,3,4,5,6,{a: 7}]
+// 什么都不传 或者 数字、字符串、json等非数组 都是返回 json 
+flattenDeep() // => []
+// 传了 字符串 或者数字
+flattenDeep(0) // => []
+// 传了 json
+flattenDeep({a: 1})) // => []
 ```
 ```js
-// flatten
-test('测试 flatten ：把数组的深层嵌套替换成单层嵌套', () => {
-    expect(flatten([1, 2, '24', [3, 5, [6, 7]]])).toEqual(
-        [1, 2, "24", 3, 5, [6, 7]]
-    )
-})
+// flatten ：只转换第一层
+flatten([1, 2, '24', [3, 5, [6, 7]]]) // => [1, 2, "24", 3, 5, [6, 7]]
 ```
 ```js
-test('测试 repeat', () => {
-    expect(repeat('')).toEqual({});
-    expect(repeat()).toEqual({});
-    expect(repeat([])).toEqual({});
-    expect(repeat([1,2,3,455,1,1])).toEqual(
-        {
-            label: 1,
-            value: 3
-        }
-    )
-    expect(repeat('aaabbbccccc')).toEqual(
-        {
-            label: "c",
-            value: 5
-        }
-    )
-})
+// repeat : 查询数组或者字符串的重复
+repeat([1,2,3,455,1,1])
+// =>  {
+//         label: 1,
+//         value: 3
+//     }
+
+repeat('aaabbbccccc')
+// =>  {
+//         label: "c",
+//         value: 5
+//     }
+
+repeat('') // => {}
 ```
 ```js
-// trim
-test('测试 trim: 去除空格', () => {
-    expect(trim('abc')).toBe('abc');
-    // 非字符串 直接返回
-    expect(trim([])).toEqual([]);
-    // 第二个参数：1 去除 首 空格
-    expect(trim(' a   b   ', 1)).toBe('a   b   ');
-    // 第二个参数：2 去除 尾 空格
-    expect(trim(' a   b   ', 2)).toBe(' a   b');
-    // 第二个参数：3 （默认） 首尾空格
-    expect(trim(' a   b   ')).toBe('a   b');
-    // 第二个参数：4 去除全部空格
-    expect(trim(' a   b   ', 4)).toBe('ab');
-})
+// trim : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
+// 第二个参数：1 去除 首 空格
+trim(' a   b   ', 1) // => 'a   b   '
+// 第二个参数：2 去除 尾 空格
+trim(' a   b   ', 2) // => ' a   b'
+// 第二个参数：3 （默认） 首尾空格
+trim(' a   b   ') // => 'a   b'
+// 第二个参数：4 去除全部空格
+trim(' a   b   ', 4) // => 'ab'
+// 非字符串 直接返回
+trim([]) // => []
+
 ```
 ```js
-// chunk
-test('测试 chunk ： 返回一个包含拆分块数组的新数组(相当于一个二维数组)', () => {
-    const arr = [1, 2, 3];
-    // 通常情况下
-    expect(chunk(arr, 1)).toEqual(
-       [[1],[2,3]]
-    )
-    // 刚好等于 数组长度的情况下
-    expect(chunk(arr, arr.length)).toEqual(
-       [[1,2,3],[]]
-    )
-    // 大于数组长度的情况下
-    expect(chunk(arr, arr.length + 1)).toEqual(
-       [[1,2,3],[]]
-    )
-    // 为零的情况下
-    expect(chunk(arr, 0)).toEqual(
-       [[],[1,2,3]]
-    )
-})
+// chunk ： 返回一个包含拆分块数组的新数组(相当于一个二维数组)
+const arr = [1, 2, 3];
+// 通常情况下
+chunk(arr, 1) // => [[1],[2,3]]
+
+// 刚好等于 数组长度的情况下
+chunk(arr, arr.length) // => [[1,2,3],[]]
+
+// 大于数组长度的情况下
+chunk(arr, arr.length + 1) // => [[1,2,3],[]]
+
+// 为零的情况下
+chunk(arr, 0) // => [[],[1,2,3]]
+
 ```
 ```js
 // createReducer 创建 reducer 的 模板
