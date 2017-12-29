@@ -22,7 +22,7 @@ console.log(
 ```
 #### 快速跳转
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
-- [dropRight](#dropRight) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
+- [dropRight](#dropright) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [notEmpty](#notEmpty) ：判断是否为空
 - [flattenDeep](#flattenDeep) ：再怎么深层的嵌套都转化为单层嵌套
 - [flatten](#flatten) : 跟flattenDeep一样，但只转换第一层
