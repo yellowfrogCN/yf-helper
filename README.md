@@ -99,6 +99,25 @@ chunk(arr, 0) // => [[],[1,2,3]]
 
 ```
 ```js
+// drop ： 将 array 中的前 n 个元素去掉，然后返回剩余的部分
+const arr = [1, 2, 3];
+// 默认情况下 从1开始计算
+drop(arr) // => [2, 3]
+
+// 通常情况下
+drop(arr, 2) // => [3]
+
+// 刚好等于 数组长度的情况下
+drop(arr, arr.length) // => []
+
+// 大于数组长度的情况下
+drop(arr, arr.length + 1) // => []
+
+// 为零的情况下
+drop(arr, 0) // => [1,2,3]
+
+```
+```js
 // createReducer 创建 reducer 的 模板
 // http://cn.redux.js.org/docs/recipes/reducers/RefactoringReducersExample.html
 import { createReducer } from 'yf-helper';

@@ -101,6 +101,7 @@ var flatten_1 = __webpack_require__(4);
 var flattenDeep_1 = __webpack_require__(5);
 var trim_1 = __webpack_require__(6);
 var chunk_1 = __webpack_require__(7);
+var drop_1 = __webpack_require__(8);
 exports.default = {
     createReducer: createReducer_1.default,
     repeat: repeat_1.default,
@@ -109,6 +110,7 @@ exports.default = {
     flattenDeep: flattenDeep_1.default,
     trim: trim_1.default,
     chunk: chunk_1.default,
+    drop: drop_1.default
 };
 
 
@@ -298,6 +300,31 @@ function chunk(arr, size) {
     return result;
 }
 exports.default = chunk;
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 去除数组的 item
+ * @param arr array
+ * @param num 想要去除的个数 从 1 开始计算 理解为丢掉几个
+ */
+function drop(arr, num) {
+    if (num === void 0) { num = 1; }
+    if (!Array.isArray(arr))
+        return [];
+    return arr.filter(function (item, index) {
+        // 因为index是从0开始的，index是从1开始的
+        if (index >= num)
+            return item;
+    });
+}
+exports.default = drop;
 
 
 /***/ })

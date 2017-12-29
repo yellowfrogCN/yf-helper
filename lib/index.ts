@@ -5,6 +5,7 @@ import flatten from './flatten';
 import flattenDeep from './flattenDeep';
 import trim from './trim';
 import chunk from './chunk';
+import drop from './drop';
 
 export default {
     createReducer,
@@ -14,4 +15,5 @@ export default {
     flattenDeep,
     trim,
     chunk,
+    drop
 }
