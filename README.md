@@ -21,6 +21,7 @@ console.log(
 ) // output: [3, 4]
 ```
 #### 快速跳转
+- [classnames](#classnames) : 计算class的值，与github上的classnames库一毛一样 
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [dropRight](#dropright) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [notEmpty](#notempty) ：判断是否为空
@@ -32,6 +33,39 @@ console.log(
 - [createReducer](#createreducer) : 创建 reducer 的 模板
 
 #### 已通过jest测试的案例
+
+#### classnames
+```js
+// classnames
+
+// 传入 字符串
+classnames() ==> ''
+classnames('hello world') 
+// ==> 'hello world'
+
+// 传入 object
+classnames(
+    {
+        hello: true,
+        world: false,
+        haha: false,
+        hehe: true,
+        xixi: true
+    }
+) 
+// ==> 'hello hehe xixi'
+
+classnames(
+    {hello: false, world: false}
+) 
+// ==> ''
+
+// 传入 array 也行
+classnames(
+    ['hello', undefined, 'world', 1, 2, null]
+) 
+// ==> 'hello world'
+```
 
 ##### drop
 ```js

@@ -7,6 +7,7 @@ import trim from './trim';
 import chunk from './chunk';
 import drop from './drop';
 import dropRight from './dropRight';
+import classnames from './classnames';
 
 export default {
     createReducer,
@@ -17,5 +18,6 @@ export default {
     trim,
     chunk,
     drop,
-    dropRight
+    dropRight,
+    classnames
 }
