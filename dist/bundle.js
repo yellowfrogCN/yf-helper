@@ -103,6 +103,7 @@ var trim_1 = __webpack_require__(6);
 var chunk_1 = __webpack_require__(7);
 var drop_1 = __webpack_require__(8);
 var dropRight_1 = __webpack_require__(9);
+var classnames_1 = __webpack_require__(10);
 exports.default = {
     createReducer: createReducer_1.default,
     repeat: repeat_1.default,
@@ -112,7 +113,8 @@ exports.default = {
     trim: trim_1.default,
     chunk: chunk_1.default,
     drop: drop_1.default,
-    dropRight: dropRight_1.default
+    dropRight: dropRight_1.default,
+    classnames: classnames_1.default
 };
 
 
@@ -352,6 +354,39 @@ function dropRight(arr, num) {
     });
 }
 exports.default = dropRight;
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * 模仿 github 上的 classnames
+ * @param arg json、数组、字符串
+ */
+function classnames(arg) {
+    if (typeof arg === 'string')
+        return arg;
+    if (typeof arg === 'object') {
+        if (!Array.isArray(arg)) {
+            var temArr = [];
+            for (var key in arg) {
+                if (arg[key]) {
+                    temArr.push(key);
+                }
+            }
+            return temArr.join(' ');
+        }
+        else {
+            return arg.filter(function (item) { return typeof item === 'string'; }).join(' ');
+        }
+    }
+    return '';
+}
+exports.default = classnames;
 
 
 /***/ })
