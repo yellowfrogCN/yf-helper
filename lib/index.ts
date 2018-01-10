@@ -1,4 +1,5 @@
 import createReducer from './createReducer';
+// const createReducer = require('./createReducer/index.js').default;
 import repeat from './repeat';
 import notEmpty from './notEmpty';
 import flatten from './flatten';

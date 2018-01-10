@@ -1,4 +1,4 @@
-const { repeat } = require('../lib').default;
+const { repeat } = require('../lib/index.js').default;
 // import { repeat } from '../lib';
 /**
  * 真假  expect(n).not.toBeTruthy();  expect(n).toBeFalsy();

@@ -1,4 +1,4 @@
-const { classnames } = require('../lib').default;
+const { classnames } = require('../lib/index.js').default;
 
 test('测试 classnames 函数', () => {
     expect(classnames('hello world')).toEqual('hello world');

@@ -1,4 +1,4 @@
-const { drop } = require('../lib').default;
+const { drop } = require('../lib/index.js').default;
 
 test('测试 drop ： 丢掉函数的第几个，默认从1开始', () => {
     const arr = [1, 2, 3];

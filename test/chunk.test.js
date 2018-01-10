@@ -1,4 +1,4 @@
-const { chunk } = require('../lib').default;
+const { chunk } = require('../lib/index.js').default;
 
 test('测试 chunk ： 返回一个包含拆分块数组的新数组(相当于一个二维数组)', () => {
     const arr = [1, 2, 3];

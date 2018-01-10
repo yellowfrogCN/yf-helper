@@ -1,4 +1,4 @@
-const { dropRight } = require('../lib').default;
+const { dropRight } = require('../lib/index.js').default;
 
 test('测试 dropRight', () => {
     const arr = [1, 2, 3];

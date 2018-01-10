@@ -1,4 +1,4 @@
-const { trim } = require('../lib').default;
+const { trim } = require('../lib/index.js').default;
 
 test('测试 trim: 去除空格', () => {
     expect(trim('abc')).toBe('abc');
