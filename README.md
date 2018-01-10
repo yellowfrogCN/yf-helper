@@ -21,7 +21,8 @@ console.log(
 ) // output: [3, 4]
 ```
 #### 快速跳转
-- [classnames](#classnames) : 计算class的值，与github上的classnames库一毛一样 
+- [actionCreator](#actioncreator) : 简化创建action的高阶函数
+- [classnames](#classnames) : 计算class的值，与github上的classnames库一毛一样
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [dropRight](#dropright) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [notEmpty](#notempty) ：判断是否为空
@@ -34,12 +35,27 @@ console.log(
 
 #### 已通过jest测试的案例
 
+#### actionCreator
+```js
+import { actionCreator } from 'yf-helper';
+import { dispatch } from 'redux';
+// 定义type
+const testAction = actionCreator('TEST');
+dispatch(test(1)); // ==> 分发一个action === {type: 'TEST', payload: 2}
+dispatch(test({a: 1, b: 2})); // ==> 分发一个action === {type: 'TEST', payload: {a: 1, b: 2}}
+
+// 传入第二个参数，用于拓展 type
+dispatch(test({a: 1, b: 2}, 'REQUEST')); // ==> 分发一个action === {type: 'TEST_REQUEST', payload: {a: 1, b: 2}}
+dispatch(test([1,2,3], 'SUCCESS')); // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: [1,2,3]}
+
+```
+
 #### classnames
 ```js
-// classnames
+import { classnames } from 'yf-helper';
 
 // 传入 字符串
-classnames() ==> ''
+classnames() // ==> ''
 classnames('hello world') 
 // ==> 'hello world'
 
@@ -69,7 +85,7 @@ classnames(
 
 ##### drop
 ```js
-// drop
+import { drop } from 'yf-helper';
 const arr = [1, 2, 3];
 // 默认情况下 从1开始计算
 drop(arr) // => [2, 3]
@@ -90,7 +106,7 @@ drop(arr, 0) // => [1,2,3]
 
 ##### dropRight
 ```js
-// dropRight
+import { dropRight } from 'yf-helper';
 const arr = [1, 2, 3];
 // 默认情况下 从1开始计算
 dropRight(arr) // => [1, 2]
@@ -111,7 +127,7 @@ dropRight(arr, 0) // => [1,2,3]
 
 ##### notEmpty
 ```js
-// notEmpty
+import { notEmpty } from 'yf-helper';
 notEmpty(null) // => false
 notEmpty(undefined) // => false
 notEmpty(NaN) // => false
@@ -128,7 +144,7 @@ notEmpty() // => false
 
 ##### flattenDeep
 ```js
-// flattenDeep
+import { flattenDeep } from 'yf-helper';
 flattenDeep([1,2, [3,4, [5,6, {a: 7}]]])
 // => [1,2,3,4,5,6,{a: 7}]
 // 什么都不传 或者 数字、字符串、json等非数组 都是返回 json 
@@ -140,12 +156,12 @@ flattenDeep({a: 1})) // => []
 ```
 ##### flatten
 ```js
-// flatten
+import { flatten } from 'yf-helper';
 flatten([1, 2, '24', [3, 5, [6, 7]]]) // => [1, 2, "24", 3, 5, [6, 7]]
 ```
 ##### repeat
 ```js
-// repeat
+import { repeat } from 'yf-helper';
 repeat([1,2,3,455,1,1])
 // =>  {
 //         label: 1,
@@ -162,7 +178,7 @@ repeat('') // => {}
 ```
 ##### trim
 ```js
-// trim
+import { trim } from 'yf-helper';
 // 第二个参数：1 去除 首 空格
 trim(' a   b   ', 1) // => 'a   b   '
 // 第二个参数：2 去除 尾 空格
@@ -177,7 +193,7 @@ trim([]) // => []
 ```
 ##### chunk
 ```js
-// chunk
+import { chunk } from 'yf-helper';
 const arr = [1, 2, 3];
 // 通常情况下
 chunk(arr, 1) // => [[1],[2,3]]
@@ -205,9 +221,7 @@ import { createReducer } from 'yf-helper';
 // 1、在 lib 文件夹下，照着其他的函数格式， 加入你写好的 typescript 函数 (表忘了 在./lib/index.ts里加入你的函数)
 // 2、在 test 文件夹下写好 函数测试
 // 3、npm run test 或者 npm t  查看你的函数是否通过测试
-// 4、npm run prod 打包到 ./dist 目录下 生成 bundle.js
-// 5、★ 进入到bundle.js，在 首行前面加入 'module.exports = ' 之前的代码，不加入的话无法使用
-// 6、修改package.json 里面的 版本号！
-// 7、npm publish 发布到NPM
+// 4、修改package.json 里面的 版本号！
+// 5、npm publish 发布到NPM
 ```
 

@@ -8,6 +8,7 @@ import chunk from './chunk';
 import drop from './drop';
 import dropRight from './dropRight';
 import classnames from './classnames';
+import actionCreator from './actionCreator';
 
 export default {
     createReducer,
@@ -19,5 +20,6 @@ export default {
     chunk,
     drop,
     dropRight,
-    classnames
+    classnames,
+    actionCreator
 }
