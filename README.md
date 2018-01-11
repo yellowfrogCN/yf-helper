@@ -41,6 +41,7 @@ import { actionCreator } from 'yf-helper';
 import { dispatch } from 'redux';
 // 定义type
 const testAction = actionCreator('TEST');
+
 dispatch(test(1)); // ==> 分发一个action === {type: 'TEST', payload: 2}
 dispatch(test({a: 1, b: 2})); // ==> 分发一个action === {type: 'TEST', payload: {a: 1, b: 2}}
 
@@ -48,6 +49,28 @@ dispatch(test({a: 1, b: 2})); // ==> 分发一个action === {type: 'TEST', paylo
 dispatch(test({a: 1, b: 2}, 'REQUEST')); // ==> 分发一个action === {type: 'TEST_REQUEST', payload: {a: 1, b: 2}}
 dispatch(test([1,2,3], 'SUCCESS')); // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: [1,2,3]}
 
+// 实战中 使用 mapDispatchToProps 绑定 也是一样
+import { connect } from 'react-redux';
+
+const mapDispatchToProps = dispatch => {
+    return {
+        testAction: (...arg) => dispatch(testAction(...arg))
+    }
+}
+connect(null, mapDispatchToProps)(<组件 />)
+testAction({a: 'yf 好帅！'}) // ==> 分发一个action === {type: 'TEST', payload: {a: 'yf 好帅！'}}
+testAction({a: '真的耶！'}, 'SUCCESS') // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: {a: 真的耶！'}}
+
+// 使用 redux 自带的 bindActionCreators 的绑定也是没问题的
+import { bindActionCreators } from 'redux';
+const mapDispatchToProps = dispatch => {
+    return {
+        testAction: bindActionCreators(testAction, dispatch)
+    }
+}
+connect(null, mapDispatchToProps)(<组件 />)
+testAction({a: 'yf 好帅！'}) // ==> 分发一个action === {type: 'TEST', payload: {a: 'yf 好帅！'}}
+testAction({a: '真的耶！'}, 'SUCCESS') // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: {a: 真的耶！'}}
 ```
 
 #### classnames
