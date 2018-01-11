@@ -58,6 +58,8 @@ import { classnames } from 'yf-helper';
 classnames() // ==> ''
 classnames('hello world') 
 // ==> 'hello world'
+classnames('hello', 'world') 
+// ==> 'hello world'
 
 // 传入 object
 classnames(
@@ -81,6 +83,17 @@ classnames(
     ['hello', undefined, 'world', 1, 2, null]
 ) 
 // ==> 'hello world'
+
+// 混合传入
+classnames(
+    'yellow',
+    {
+        frog: true,
+        rabbit: false
+    },
+    ['hello', undefined, 'world', 1, 2, null]
+)
+// ==> 'yellow frog hello world'
 ```
 
 ##### drop
