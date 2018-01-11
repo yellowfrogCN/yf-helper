@@ -1,6 +1,6 @@
 {
   "name": "yf-helper",
-  "version": "3.2.4",
+  "version": "3.2.5",
   "description": "make you happy!",
   "main": "index.js",
   "scripts": {

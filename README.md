@@ -29,7 +29,7 @@ console.log(
 - [flattenDeep](#flattendeep) ：再怎么深层的嵌套都转化为单层嵌套
 - [flatten](#flatten) : 跟flattenDeep一样，但只转换第一层
 - [repeat](#repeat) : 查询数组或者字符串的重复
-- [trim](#trim) : 去除空格 可以 去除选择 去除 首 、尾、首尾、全部 的空格
+- [trim](#trim) : 默认去除首尾空格, 可以选择 去除 首 、尾、首尾、全部 的空格
 - [chunk](#chunk) ：返回一个包含拆分块数组的新数组(相当于一个二维数组)
 - [createReducer](#createreducer) : 创建 reducer 的 模板
 
