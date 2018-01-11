@@ -22,7 +22,7 @@ console.log(
 ```
 #### 快速跳转
 - [actionCreator](#actioncreator) : 简化创建action的高阶函数
-- [classnames](#classnames) : 计算class的值，与github上的classnames库一毛一样
+- [classnames](#classnames) : 计算class的值，与github上的[classnames](https://github.com/JedWatson/classnames)库基本一致
 - [drop](#drop) : 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [dropRight](#dropright) ：从右边开始 将 array 中的前 n 个元素去掉，然后返回剩余的部分
 - [notEmpty](#notempty) ：判断是否为空
@@ -101,11 +101,11 @@ classnames(
 ) 
 // ==> ''
 
-// 传入 array 也行
+// 传入 array 也行 
 classnames(
     ['hello', undefined, 'world', 1, 2, null]
 ) 
-// ==> 'hello world'
+// ==> 'hello world'  ★ github上classnames的库是返回带数字的 'hello world 1 2'
 
 // 混合传入
 classnames(
@@ -117,6 +117,18 @@ classnames(
     ['hello', undefined, 'world', 1, 2, null]
 )
 // ==> 'yellow frog hello world'
+
+// 嵌套等超复杂的情况下
+classnames(
+    'yellow', ['hello', undefined, 'world', 1, ['a', {b: true, c: ['d']}], null, true]
+)
+// ==> 'yellow hello world a b c'
+
+classnames(
+    'yellow', ['hello', undefined, 'world', 1,0, ['a',['b', ['c', ['d', ['e', undefined]]]]], null]
+)
+// ==> 'yellow hello world a b c d e'
+
 ```
 
 ##### drop

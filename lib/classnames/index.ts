@@ -4,10 +4,12 @@
  */
 function classnames (...arg): string {
     let temArr: Array<any> = [];
-    // 用 es6 的rest语法传进来的arg是个数组
+    // 用rest语法传进来的arg是个数组
     arg.map((item, index) => {
-        if (typeof item === 'string') temArr.push(item);
-        if (typeof item === 'object') {
+        if (typeof item === 'string') {
+            return temArr.push(item);
+        }
+        if (item) {
             // 如果不是数组的话
             if (!Array.isArray(item)) {
                 for (const key in item) {
@@ -15,10 +17,15 @@ function classnames (...arg): string {
                         temArr.push(key);
                     }
                 }
+                return temArr;
             } else {
-                // 过滤掉杂七杂八的内容，返回一个数组
-                const arr: Array<any> = item.filter(item => typeof item === 'string');
+                // 递归调用
+                let arr: Array<any> = item.map(item => {
+                    return classnames(item) 
+                });
+                arr = arr.filter(item => item !== '');
                 temArr = temArr.concat(arr)
+                return temArr;
             }
         }
     })
