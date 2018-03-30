@@ -26,4 +26,12 @@ test('测试 actionCreator ： 简化创建action的高阶函数', () => {
             payload: {a: 1, b: 2}
         }
     )
+    const test2 = actionCreator('TEST', '举个栗子')
+    expect(test2(1)).toEqual(
+        {
+            type: 'TEST',
+            payload: 1,
+            info: '举个栗子'
+        }
+    )
 })

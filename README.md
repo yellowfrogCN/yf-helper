@@ -39,15 +39,20 @@ console.log(
 ```js
 import { actionCreator } from 'yf-helper';
 import { dispatch } from 'redux';
-// 定义type
+// 定义action，第一个参数是用来决定action.type的
 const testAction = actionCreator('TEST');
 
-dispatch(test(1)); // ==> 分发一个action === {type: 'TEST', payload: 2}
-dispatch(test({a: 1, b: 2})); // ==> 分发一个action === {type: 'TEST', payload: {a: 1, b: 2}}
+dispatch(testAction(1)); // ==> 分发一个action === {type: 'TEST', payload: 1}
+dispatch(testAction({a: 1, b: 2})); // ==> 分发一个action === {type: 'TEST', payload: {a: 1, b: 2}}
 
 // 传入第二个参数，用于拓展 type
-dispatch(test({a: 1, b: 2}, 'REQUEST')); // ==> 分发一个action === {type: 'TEST_REQUEST', payload: {a: 1, b: 2}}
-dispatch(test([1,2,3], 'SUCCESS')); // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: [1,2,3]}
+dispatch(testAction({a: 1, b: 2}, 'REQUEST')); // ==> 分发一个action === {type: 'TEST_REQUEST', payload: {a: 1, b: 2}}
+dispatch(testAction([1,2,3], 'SUCCESS')); // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: [1,2,3]}
+
+// 当然你在 定义action的时候，也可以加入第二个参数，这个参数是用来加入提示语的，方便后续的排错
+const testAction2 = actionCreator('TEST', '这是一个创贱action的栗子');
+dispatch(testAction2(1)); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子' }
+
 
 // 实战中 使用 mapDispatchToProps 绑定 也是一样
 import { connect } from 'react-redux';
