@@ -271,7 +271,7 @@ import { createReducer } from 'yf-helper';
 ```js
 // 建议:
 // 0、上网收如何发布到Npm 中间或许会碰到403等错误，遇到问题就百度、谷歌，遇神杀神、遇佛杀佛，然后可以 npm publish 后，再参考下面的操作
-// 1、在 lib 文件夹下，照着其他的函数格式， 加入你写好的 typescript 函数 (表忘了 在./lib/index.ts里加入你的函数)
+// 1、在 lib 文件夹下，照着其他的函数格式， 加入你写好的 typescript 函数 (表忘了 在./lib/index.ts里加入你的函数)，★因为测试函数这边引用的是js文件，故先用ts 把 之前的 typescript 函数 转化为 js 文件！
 // 2、在 test 文件夹下写好 函数测试
 // 3、npm run test 或者 npm t  查看你的函数是否通过测试
 // 4、修改package.json 里面的 版本号！
