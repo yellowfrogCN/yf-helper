@@ -11,27 +11,27 @@ function actionCreator (type: string = '', info: string = '') : Object {
         console.warn('最好在使用actionCreator创建action的时候,加入第二个参数,且是String类型,为了更方便您日后的工作！');
     }
     return function (payload: any, extendType : string = '') : Object {
+        // 因为存在递归的概念，故必须用另外一个变量来保存
+        let newInfo : string = info;
+        let newType : string = type;
         // 如果不传额外的type，则用原先定义的字符串''，否则自动在额外的前面加上 '_'
-        // let newInfo : string = '';
         if (extendType && typeof(extendType) === 'string') {
-            extendType = '_' + extendType;
             // 因为SUCCESS与ERROR经常使用，故这边直接写死
             switch (extendType.toUpperCase()) {
                 case 'SUCCESS':
-                    info = info + '~~成功了~~';
-                    break;
+                newInfo = info + '~~成功了~~';
+                break;
                 case 'ERROR':
-                    info = info + '~~失败了~~';
-                    break;
+                newInfo = info + '~~失败了~~';
+                break;
             }
+            newType = type + '_' + extendType;
         }
-        type = type + extendType;
-        console.log(type)
         let result : Object = {
-            type,
+            type: newType,
             payload
         }
-        if (info) result['info'] = info;
+        if (info) result['info'] = newInfo;
         return result;
     }
 }

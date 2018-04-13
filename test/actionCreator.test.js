@@ -65,7 +65,7 @@ test('测试 actionCreator ： 简化创建action的高阶函数', () => {
     // 假设不是给的 SUCCESS 或者 ERROR
     expect(test2(1, 'helloworld')).toEqual(
         {
-            type: 'TEST_HELLOWORLD',
+            type: 'TEST_helloworld',
             payload: 1,
             info: '举个栗子'
         }
