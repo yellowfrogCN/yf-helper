@@ -24,6 +24,8 @@ function actionCreator (type: string = '', info: string = '') : Object {
                 case 'ERROR':
                 newInfo = info + '~~失败了~~';
                 break;
+                case 'FINISH':
+                newInfo = info + '~~结束了~~';
             }
             newType = type + '_' + extendType;
         }
