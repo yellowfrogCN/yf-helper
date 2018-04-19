@@ -50,12 +50,17 @@ dispatch(testAction({a: 1, b: 2}, 'REQUEST')); // ==> 分发一个action === {ty
 dispatch(testAction([1,2,3], 'SUCCESS')); // ==> 分发一个action === {type: 'TEST_SUCCESS', payload: [1,2,3]}
 
 // 当然你在 定义action的时候，也可以加入第二个参数，这个参数是用来加入提示语的，方便后续的排错 （推荐这么写）
+// 目前定义了四个经常用到的 分别是 SUCCESS ERROR FINISH LOADING
 const testAction2 = actionCreator('TEST', '这是一个创贱action的栗子');
 dispatch(testAction2(1)); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子' }
 // 如果传入 的是 SUCCESS 的话，则 会自动 在提示语后面加上 ~~成功了~~
 dispatch(testAction2(1, 'SUCCESS')); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子~~成功了~~' }
 // 如果传入 的是 ERROR 的话，则 会自动 在提示语后面加上 ~~失败了~~
 dispatch(testAction2(1, 'ERROR')); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子~~失败了~~' }
+// 如果传入 的是 FINISH 的话，则 会自动 在提示语后面加上 ~~结束了~~
+dispatch(testAction2(1, 'FINISH')); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子~~结束了~~' }
+// 如果传入 的是 LOADING 的话，则 会自动 在提示语后面加上 ~~loading了~~
+dispatch(testAction2(1, 'LOADING')); // ==> 分发一个action === { type: 'TEST', payload: 1, info: '这是一个创贱action的栗子~~loading了~~' }
 
 
 // 实战中 使用 mapDispatchToProps 绑定 也是一样

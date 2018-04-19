@@ -26,6 +26,10 @@ function actionCreator (type: string = '', info: string = '') : Object {
                 break;
                 case 'FINISH':
                 newInfo = info + '~~结束了~~';
+                break;
+                case 'LOADING':
+                newInfo = info + '~~loading了~~';
+                break;
             }
             newType = type + '_' + extendType;
         }
